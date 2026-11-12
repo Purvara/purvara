@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PURVARA | Erkennen. Erwachen. Erheben.</title>
+    <!-- Google Fonts: Cormorant Garamond & Work Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #000099;
+            --bg-cream: #FFF8F0;
+            --text-dark: #1a1a1a;
+            --text-gray: #555555;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .btn, .nav-links a, .logo-text, .section-title h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-cream);
+            box-shadow: 0 2px 15px rgba(0,0,99,0.05);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: 3px;
+            margin-bottom: -4px;
+        }
+
+        .logo-text span {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            font-family: 'Work Sans', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            font-size: 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        .btn-nav {
+            background: var(--primary);
+            color: var(--bg-cream) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 4px;
+            transition: opacity 0.3s !important;
+        }
+
+        .btn-nav:hover {
+            opacity: 0.85 !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary);
+            color: var(--bg-cream);
+            padding: 160px 5% 100px 5%;
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content h2 {
+            font-size: clamp(2.5rem, 4.5vw, 4rem);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: var(--bg-cream);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            font-family: 'Work Sans', sans-serif;
+            color: #e0e0f0;
+            margin-bottom: 2.5rem;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.9rem 2rem;
+            border-radius: 4px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--bg-cream);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--bg-cream);
+            border: 1px solid rgba(255,248,240,0.4);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--bg-cream);
+            background: rgba(255,248,240,0.05);
+        }
+
+        /* Hero Image - Nur Oberkörper im Fokus */
+        .hero-image-wrapper {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,248,240,0.15);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            object-position: center 25%; /* Konzentriert auf den Oberkörper / Gesicht */
+            display: block;
+        }
+
+        /* Sektionen Allgemein */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 70px auto;
+        }
+
+        .section-title span {
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 500;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+        }
+
+        /* Angebote / Säulen */
+        .offerings {
+            background-color: var(--white);
+        }
+
+        .offerings-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .offering-card {
+            background: var(--bg-cream);
+            padding: 3rem 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,99,0.03);
+            transition: transform 0.3s;
+            border-top: 3px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .offering-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .offering-icon {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .offering-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .offering-card p {
+            color: var(--text-gray);
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.98rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Über / Philosophie */
+        .philosophy {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .philosophy-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,99,0.1);
+            height: 480px;
+            object-fit: cover;
+        }
+
+        .philosophy-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .philosophy-content p {
+            color: var(--text-gray);
+            font-family: 'Work Sans', sans-serif;
+            margin-bottom: 1.2rem;
+        }
+
+        .slogan-quote {
+            margin-top: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--bg-cream);
+            padding: 5rem 5% 2rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col h4 {
+            color: var(--bg-cream);
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-col p, .footer-col a {
+            display: block;
+            color: #d0d0e0;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.95rem;
+            margin-bottom: 0.7rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--bg-cream);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-icons a {
+            background: rgba(255,248,240,0.1);
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--bg-cream);
+            transition: background 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--bg-cream);
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,248,240,0.15);
+            padding-top: 2rem;
+            text-align: center;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.85rem;
+            color: #b0b0c5;
+        }
+
+        .legal-links {
+            margin-top: 0.5rem;
+        }
+
+        .legal-links button, .legal-links a {
+            background: none;
+            border: none;
+            color: #b0b0c5;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-decoration: underline;
+            padding: 0 5px;
+            font-family: 'Work Sans', sans-serif;
+            display: inline;
+        }
+
+        .legal-links button:hover, .legal-links a:hover {
+            color: var(--bg-cream);
+        }
+
+        /* Modal für Impressum & Datenschutz */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,99,0.6);
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            padding: 3rem;
+            border-radius: 8px;
+            max-width: 750px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .modal-content h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .modal-content h4 {
+            color: var(--primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .modal-content p, .modal-content li {
+            font-size: 0.95rem;
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-gray);
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-content ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        /* Mobile Responsive */
+        @media(max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .philosophy {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-text">
+                <h1>PURVARA</h1>
+                <span>Erkennen. Erwachen. Erheben.</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#angebot">Angebot</a></li>
+            <li><a href="#philosophie">Philosophie</a></li>
+            <li><a href="https://forms.gle/Hoo37bF6feAF1h7h9" target="_blank">Journal Warteliste</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="https://forms.gle/Hoo37bF6feAF1h7h9" target="_blank" class="btn-nav">Warteliste</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h2>Erkennen. Erwachen. Erheben.</h2>
+                <p>Begib dich auf eine transformative Reise zu dir selbst. Entdecke unser exklusives Journal, die genussvollen Queens-Dinner und unser tiefgreifendes 12-Wochen-Programm.</p>
+                <div class="hero-buttons">
+                    <a href="https://forms.gle/Hoo37bF6feAF1h7h9" target="_blank" class="btn btn-primary">
+                        <i class="fa-solid fa-book-open"></i> Zum Journal Eintragen
+                    </a>
+                    <a href="#angebot" class="btn btn-outline">
+                        Angebote entdecken
+                    </a>
+                </div>
+            </div>
+            <div>
+                <!-- Bild: purvara-main (fokussiert auf Oberkörper) -->
+                <div class="hero-image-wrapper">
+                    <img src="purvara-main.jpg" alt="Annika Pflug - Purvara">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Angebot Sektion -->
+    <section id="angebot" class="offerings">
+        <div class="section-title">
+            <span>Transformation & Begleitung</span>
+            <h2>Dein Weg zu Klarheit & Stärke</h2>
+        </div>
+        <div class="offerings-grid">
+            <!-- Journal -->
+            <div class="offering-card">
+                <div>
+                    <img src="purvara-journal.jpg" alt="Purvara Journal" class="card-img">
+                    <div class="offering-icon"><i class="fa-solid fa-book"></i></div>
+                    <h3>Das Journal</h3>
+                    <p>Dein täglicher Begleiter für bewusste Reflexion, innere Klarheit und persönliche Transformation. Sichere dir deinen Platz auf der Warteliste.</p>
+                </div>
+                <a href="https://forms.gle/Hoo37bF6feAF1h7h9" target="_blank" class="btn btn-primary" style="background: var(--primary); color: var(--bg-cream); width: 100%; justify-content: center;">
+                    Warteliste Journal
+                </a>
+            </div>
+
+            <!-- Queens Dinner -->
+            <div class="offering-card">
+                <div>
+                    <img src="purvara-dinner.jpg" alt="Queens Dinner" class="card-img">
+                    <div class="offering-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <h3>Queens Dinner</h3>
+                    <p>Exklusive, inspirierende Abende in besonderem Ambiente. Hochwertiges Networking, tiefgehenden Austausch und kulinarischer Genuss.</p>
+                </div>
+                <a href="#kontakt" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary); width: 100%; justify-content: center;">
+                    Mehr erfahren
+                </a>
+            </div>
+
+            <!-- 12-Wochen-Kurs -->
+            <div class="offering-card">
+                <div>
+                    <img src="purvara-12wochen-kurs.jpg" alt="12-Wochen-Programm" class="card-img">
+                    <div class="offering-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <h3>12-Wochen-Programm</h3>
+                    <p>Das intensive Signature-Programm für deinen tiefen Durchbruch. Schritt für Schritt zu deinem authentischen Ich und neuer Lebensenergie.</p>
+                </div>
+                <a href="#kontakt" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary); width: 100%; justify-content: center;">
+                    Programm anfragen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophie Sektion -->
+    <section id="philosophie" style="background-color: var(--bg-cream);">
+        <div class="philosophy">
+            <div class="philosophy-image">
+                <img src="purvara-kontakt.jpg" alt="Philosophie Purvara">
+            </div>
+            <div class="philosophy-content">
+                <span>Haltung & Vision</span>
+                <h2>Echte Veränderung beginnt im Inneren</h2>
+                <p>Purvara steht für einen ganzheitlichen Weg aus Bewusstsein, Ausrichtung und exklusiven Erlebnissen. Ob durch das geschriebene Wort im Journal, den persönlichen Kreis beim Dinner oder die intensive Begleitung im 12-Wochen-Kurs.</p>
+                <p>Ich begleite dich dabei, deine Stärken glasklar zu erkennen, alte Muster hinter dir zu lassen und deinen ureigenen Weg kraftvoll zu gehen.</p>
+                <div class="slogan-quote">
+                    „Erkennen. Erwachen. Erheben.“
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Sektion -->
+    <section id="kontakt" style="background-color: var(--white); text-align: center;">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <span style="color: var(--primary); font-family: 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; display: block; margin-bottom: 0.5rem;">Direkter Draht</span>
+            <h2 style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Lass uns in Verbindung treten</h2>
+            <p style="color: var(--text-gray); font-family: 'Work Sans', sans-serif; margin-bottom: 2.5rem;">Du hast Fragen zum Journal, den Queens-Dinners oder dem 12-Wochen-Programm? Schreib mir gerne direkt per E-Mail oder auf Instagram.</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:info@purvara.de" class="btn btn-primary" style="background: var(--primary); color: var(--bg-cream);">
+                    <i class="fa-solid fa-envelope"></i> info@purvara.de
+                </a>
+                <a href="https://instagram.com/purvara.klarheit" target="_blank" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary);">
+                    <i class="fa-brands fa-instagram"></i> @purvara.klarheit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>PURVARA</h4>
+                <p>Annika Pflug</p>
+                <p>Speyerer Straße 17</p>
+                <p>76448 Durmersheim</p>
+                <p>Email: info@purvara.de</p>
+            </div>
+            <div class="footer-col">
+                <h4>Social Media</h4>
+                <a href="https://instagram.com/purvara.klarheit" target="_blank">Instagram: @purvara.klarheit</a>
+                <a href="https://forms.gle/Hoo37bF6feAF1h7h9" target="_blank">Journal Warteliste (Google Form)</a>
+            </div>
+            <div class="footer-col">
+                <h4>Angebote</h4>
+                <p>• Das Journal</p>
+                <p>• Queens Dinner</p>
+                <p>• 12-Wochen-Programm</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PURVARA – Annika Pflug. Alle Rechte vorbehalten.</p>
+            <div class="legal-links">
+                <button onclick="openModal('impressumModal')">Impressum</button> | 
+                <button onclick="openModal('datenschutzModal')">Datenschutz</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div id="impressumModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('impressumModal')">&times;</button>
+            <h3>Impressum</h3>
+            <p>Angaben gemäß § 5 TMG:<br>
+            Annika Pflug<br>
+            Speyerer Straße 17<br>
+            76448 Durmersheim</p>
+            
+            <h4>Kontakt</h4>
+            <p>E-Mail: info@purvara.de</p>
+            
+            <h4>Redaktionell verantwortlich</h4>
+            <p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
+            Annika Pflug<br>
+            Speyerer Straße 17<br>
+            76448 Durmersheim</p>
+            
+            <p><a href="https://www.purvara.de/impressum" target="_blank">Original Impressum auf purvara.de</a></p>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div id="datenschutzModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('datenschutzModal')">&times;</button>
+            <h3>Datenschutzerklärung</h3>
+            <p><strong>1. Datenschutz auf einen Blick</strong></p>
+            <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen...</p>
+            <p><strong>2. Hosting über GitHub Pages</strong></p>
+            <p>Diese Website wird über GitHub Pages gehostet. Beim Besuch erfasst GitHub Server-Logfiles zur Betriebssicherheit.</p>
+            <p><strong>3. Google Forms (Journal Warteliste)</strong></p>
+            <p>Wenn Sie sich über den bereitgestellten Link in die Journal-Warteliste eintragen, nutzen wir Google Forms. Es gelten die Datenschutzbestimmungen von Google LLC.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
